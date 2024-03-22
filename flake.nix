@@ -26,6 +26,10 @@
         zipAlignPath = "${androidComposition.androidsdk}/libexec/android-sdk/build-tools/${buildToolsVersion}/zipalign";
         logseqVersion = "0.10.7";
 
+        releaseScript = pkgs.writeShellScript "release.sh" ''
+            gh release create ${logseqVersion} \
+              --generate-notes result/*.apk
+        '';
       in {
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "logseq";
@@ -52,6 +56,7 @@
           '';
           installPhase = ''
             mkdir $out/
+            cp ${releaseScript} $out/release.sh
             mv logseq-aligned-debugSigned.apk $out/Logseq-android-${logseqVersion}-cloned.apk
           '';
         };
