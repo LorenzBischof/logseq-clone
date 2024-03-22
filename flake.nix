@@ -19,7 +19,7 @@
           hash = "sha256-4Smf1vz02lJ91Tc1tWEn6OqSKjIRKBI7nDLWGbuh2DU=";
         };
 
-        buildToolsVersion = "30.0.3";
+        buildToolsVersion = "33.0.2";
         androidComposition = pkgs.androidenv.composeAndroidPackages {
             buildToolsVersions = [ buildToolsVersion ];
         };
@@ -52,7 +52,7 @@
           '';
           installPhase = ''
             mkdir $out/
-            mv logseq.apk $out/Logseq-android-${logseqVersion}-cloned.apk
+            mv logseq-aligned-debugSigned.apk $out/Logseq-android-${logseqVersion}-cloned.apk
           '';
         };
       });
