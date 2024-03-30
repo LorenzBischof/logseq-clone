@@ -24,7 +24,7 @@
             buildToolsVersions = [ buildToolsVersion ];
         };
         zipAlignPath = "${androidComposition.androidsdk}/libexec/android-sdk/build-tools/${buildToolsVersion}/zipalign";
-        logseqVersion = "0.10.7";
+        logseqVersion = "0.10.8";
 
         releaseScript = pkgs.writeShellScript "release.sh" ''
             gh release create ${logseqVersion} \
@@ -36,7 +36,7 @@
           version = "1.0";
           src = pkgs.fetchurl {
             url = "https://github.com/logseq/logseq/releases/download/${logseqVersion}/Logseq-android-${logseqVersion}.apk";
-            hash = "sha256-fORtNB/Mi+r5JHSwmGjO660DBBzWgvU5+o2TcPMILy4=";
+            hash = "sha256-UoXg5ATuHrNXeNGuEunoXG8BHJUkV09/820nCRKruv8=";
           };
           nativeBuildInputs = with pkgs; [apktool openjdk17 perl androidComposition.build-tools];
           unpackPhase = ''
